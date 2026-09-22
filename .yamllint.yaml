@@ -1,0 +1,98 @@
+---
+"extends": "default"
+
+"rules":
+  "anchors":
+    "forbid-duplicated-anchors": true
+    "forbid-undeclared-aliases": true
+    "forbid-unused-anchors": true
+    "level": "error"
+  "braces":
+    "forbid": "non-empty"
+    "level": "error"
+    "max-spaces-inside-empty": 0
+    "min-spaces-inside-empty": 0
+  "brackets":
+    "forbid": "non-empty"
+    "level": "error"
+    "max-spaces-inside-empty": 0
+    "min-spaces-inside-empty": 0
+  "colons":
+    "level": "error"
+    "max-spaces-after": 1
+    "max-spaces-before": 0
+  "commas":
+    "level": "error"
+    "max-spaces-after": 1
+    "max-spaces-before": 0
+    "min-spaces-after": 1
+  "comments":
+    "ignore-shebangs": false
+    "level": "error"
+    "min-spaces-from-content": 1
+    "require-starting-space": true
+  "comments-indentation":
+    "level": "error"
+  "document-end":
+    "level": "error"
+    "present": true
+  "document-start":
+    "level": "error"
+    "present": true
+  "empty-lines":
+    "level": "error"
+    "max": 1
+    "max-end": 0
+    "max-start": 0
+  "empty-values":
+    "forbid-in-block-mappings": true
+    "forbid-in-block-sequences": true
+    "forbid-in-flow-mappings": true
+    "level": "error"
+  "float-values":
+    "forbid-inf": true
+    "forbid-nan": true
+    "forbid-scientific-notation": true
+    "level": "error"
+    "require-numeral-before-decimal": true
+  "hyphens":
+    "level": "error"
+    "max-spaces-after": 1
+  "indentation":
+    "check-multi-line-strings": true
+    "indent-sequences": true
+    "level": "error"
+    "spaces": 2
+  "key-duplicates":
+    "forbid-duplicated-merge-keys": true
+    "level": "error"
+  "key-ordering": "disable"
+  "line-length":
+    "allow-non-breakable-inline-mappings": false
+    "allow-non-breakable-words": false
+    "level": "error"
+    "max": 120
+  "new-line-at-end-of-file":
+    "level": "error"
+  "new-lines":
+    "level": "error"
+    "type": "unix"
+  "octal-values":
+    "forbid-explicit-octal": true
+    "forbid-implicit-octal": true
+    "level": "error"
+  "quoted-strings":
+    "allow-quoted-quotes": true
+    "check-keys": true
+    "level": "error"
+    "quote-type": "double"
+    "required": true
+  "trailing-spaces":
+    "level": "error"
+  "truthy":
+    "allowed-values":
+      - "true"
+      - "false"
+    "check-keys": true
+    "level": "error"
+...

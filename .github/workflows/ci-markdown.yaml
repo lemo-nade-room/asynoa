@@ -1,18 +1,19 @@
-name: CI Markdown
+---
+"name": "CI Markdown"
 
-on:
-  pull_request:
-    paths:
+"on":
+  "pull_request":
+    "paths":
       - "**/*.md"
       - "**/*.markdown"
       - ".editorconfig"
       - ".oxfmtrc.json"
       - ".rumdl.toml"
       - ".github/workflows/ci-markdown.yaml"
-  push:
-    branches:
-      - main
-    paths:
+  "push":
+    "branches":
+      - "main"
+    "paths":
       - "**/*.md"
       - "**/*.markdown"
       - ".editorconfig"
@@ -20,33 +21,34 @@ on:
       - ".rumdl.toml"
       - ".github/workflows/ci-markdown.yaml"
 
-permissions:
-  contents: read
+"permissions":
+  "contents": "read"
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+"concurrency":
+  "group": "${{ github.workflow }}-${{ github.ref }}"
+  "cancel-in-progress": true
 
-jobs:
-  verify:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
+"jobs":
+  "verify":
+    "runs-on": "ubuntu-latest"
+    "timeout-minutes": 10
+    "steps":
+      - "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" # v7.0.1
+        "with":
+          "persist-credentials": false
 
-      - uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
-        with:
-          version: "12"
-          install: false
+      - "uses": "pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024" # v3.0.0
+        "with":
+          "version": "12"
+          "install": false
 
-      - uses: rvben/rumdl@41e15c580461c971819816143d4e43c636647674 # v0.2.75
-        with:
-          install-only: true
+      - "uses": "rvben/rumdl@41e15c580461c971819816143d4e43c636647674" # v0.2.75
+        "with":
+          "install-only": true
 
-      - name: Format Check Markdown
-        run: git ls-files -z -- '*.md' '*.markdown' | xargs -0 -r pnx oxfmt --check --
+      - "name": "Format Check Markdown"
+        "run": "git ls-files -z -- '*.md' '*.markdown' | xargs -0 -r pnx oxfmt --check --"
 
-      - name: Lint Markdown
-        run: git ls-files -z -- '*.md' '*.markdown' | xargs -0 -r rumdl check --output-format github --
+      - "name": "Lint Markdown"
+        "run": "git ls-files -z -- '*.md' '*.markdown' | xargs -0 -r rumdl check --output-format github --"
+...
