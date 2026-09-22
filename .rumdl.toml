@@ -1,0 +1,3 @@
+[global]
+enable = ["ALL"]
+editorconfig = true
