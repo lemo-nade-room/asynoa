@@ -1,0 +1,57 @@
+---
+"name": "CI Swift"
+
+"on":
+  "pull_request":
+    "paths":
+      - "**/*.swift"
+      - "Package.resolved"
+      - "Sources/**"
+      - "Tests/**"
+      - ".swift-format"
+      - ".github/workflows/ci-swift.yaml"
+  "push":
+    "branches":
+      - "main"
+    "paths":
+      - "**/*.swift"
+      - "Package.resolved"
+      - "Sources/**"
+      - "Tests/**"
+      - ".swift-format"
+      - ".github/workflows/ci-swift.yaml"
+
+"permissions":
+  "contents": "read"
+
+"concurrency":
+  "group": "${{ github.workflow }}-${{ github.ref }}"
+  "cancel-in-progress": true
+
+"jobs":
+  "verify":
+    "runs-on": "ubuntu-latest"
+    "timeout-minutes": 15
+    "steps":
+      - "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" # v7.0.1
+        "with":
+          "fetch-depth": 0
+          "persist-credentials": false
+
+      - "uses": "vapor/swiftly-action@bedb227456c5f495afbef80baebee17a8a02cef4" # v0.2.1
+        "with":
+          "toolchain": "latest"
+
+      - "run": "swift format lint --strict --recursive ."
+
+      - "uses": "actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9" # v6.1.0
+        "with":
+          "path": ".build"
+          "key": "swift-${{ runner.os }}-${{ runner.arch }}"
+
+      - "uses": "chetan/git-restore-mtime-action@d186aca54f8760da4dec55313195e51ed3ebb0b3" # v2.3
+        "with":
+          "args": "--commit-time"
+
+      - "run": "swift test"
+...
