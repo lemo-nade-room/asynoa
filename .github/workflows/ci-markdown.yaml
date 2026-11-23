@@ -42,7 +42,7 @@
           "version": "12"
           "install": false
 
-      - "uses": "rvben/rumdl@41e15c580461c971819816143d4e43c636647674" # v0.2.75
+      - "uses": "rvben/rumdl@ba563d6780c6119bd526c869a730b492c1ad54e5" # v0.3.5
         "with":
           "install-only": true
 
